@@ -1,0 +1,203 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font: 14px 'Nunito', sans-serif;
+    color: #fff;
+    background: #020631;
+    overflow-x: hidden;
+    /* height: 100vh; */
+}
+
+/* navbar */
+.navbar_heading {
+    color: #626262;
+}
+
+.navbar_heading:hover {
+    transform: scale(1.04, 1.04);
+}
+
+.main_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.time {
+    width: 100vw;
+}
+
+.time p {
+    margin: 15px 25px 0px 0px;
+    background: transparent;
+}
+
+.image {
+    margin-top: 5px;
+}
+
+.main_div .logo_dis {
+    margin-top: 14px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: capitalize;
+}
+
+.input_type {
+    position: relative;
+    width: 20rem;
+}
+
+.add_btn {
+    font-size: 27px;
+    color: #9da1af;
+    background: transparent;
+    font-weight: 600;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.add_btn:hover {
+    color: #666;
+}
+
+.list {
+    margin-top: 20px;
+}
+
+.list ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.list ul li {
+    box-shadow: 1px 4px 4px -3px #999494;
+    border-radius: 6px;
+    width: 20rem;
+}
+
+/* .list ul li p{
+    background-color: #57007E;
+    color: #ebe4e4;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-size: large;
+    padding: 9px 3px;
+    overflow-y: auto;
+    overflow-x: hidden;
+} */
+.list ul li p:hover {
+    background: #fff;
+    color: black;
+    cursor: pointer;
+    transition: all 1s ease-out;
+}
+
+.ckBox_span {
+    background: transparent;
+    margin: 10px;
+}
+
+.edite_icon {
+    background-color: transparent;
+    position: relative;
+    float: right;
+}
+
+.edite {
+    color: #3dba3c;
+    background-color: transparent;
+}
+
+.delete {
+    color: rgb(240, 87, 87);
+    background-color: transparent;
+    margin: 0px 5px 0px 11px;
+}
+
+.delete:hover {
+    color: rgb(49 11 11);
+}
+
+.edite:hover {
+    color: #216520;
+}
+
+.add_btn:active,
+.edite:active,
+.delete:active,
+.deleteAll button:active {
+    transform: scale(0.8, 0.8);
+}
+
+.deleteAll {
+    margin-top: 14px;
+    padding-bottom: 20px;
+}
+
+.deleteAll button {
+    background-color: #fff;
+}
+
+.deleteAll button:hover {
+    background-color: rgb(37, 37, 129);
+    color: antiquewhite;
+    border-color: #666;
+    transition: all 0.5s ease-out;
+}
+
+/* singup */
+
+.singup_form {
+    width: 450px;
+}
+
+.password_input {
+    position: relative;
+}
+
+.password_show {
+    position: absolute;
+    top: 37px;
+    color: #736060;
+    right: 10px;
+    font-weight: bold;
+    font-size: medium;
+}
+
+@media screen and (max-width: 471px) {
+    .singup_form {
+        width: 275px;
+    }
+}
+
+@media screen and (max-width: 321px) {
+    .input_type {
+        width: 14rem;
+    }
+
+    .btn_nav {
+        padding: 2px;
+    }
+
+    .singup_form {
+        width: 250px;
+    }
+}
+
+
+.Error img {
+    width: 100vw;
+    height: 100vh;
+}
+
+.toastBody {
+    font-family: "Atlas Grotask Web", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
