@@ -3,6 +3,7 @@ const router = express.Router();
 const user = require('../models/registrationSchema');
 const validate = require('../middlewares/validate-middleware');
 const { signupSchema, loginSchema } = require('../validators/auth-validator');
+const fetchUser = require('../middlewares/fetchUser');
 
 // *-------------------
 // user Registration
@@ -52,6 +53,49 @@ router.post('/login', validate(loginSchema), async (req, res) => {
         }
     } catch (error) {
         next(error)
+    }
+});
+
+// *-------------------
+// get login user 
+// *-------------------
+
+router.get('/loginuser',fetchUser,async(req,res,next)=>{
+   try {
+    const loginUser = await user.find({ _id: req.user.userId });
+      const loginUserDeltail = loginUser[0]
+    res.status(200).json(loginUserDeltail);
+   } catch (error) {
+    next(error);
+    
+   }
+})
+
+// *-------------------
+// get all user for admin
+// *-------------------
+router.get('/user',async(req,res,next)=>{
+    try {
+         const userData = await user.find();
+         res.status(200).json(userData);
+    } catch (error) {
+        next(error);
+    }
+});
+// *-------------------
+// Delete user 
+// *-------------------
+router.delete('/deleteuser/:id',async(req,res,next)=>{
+    try {
+        const id = req.params.id;
+         const deleteUserData = await user.findByIdAndDelete(id);
+         if(deleteUserData.deletedCount == 0){
+            res.status(401).json({msg:"can't delete user"});
+         }else {
+         res.status(200).json({msg:"sucessfully deleted"});
+         }
+    } catch (error) {
+        next(error);
     }
 });
 

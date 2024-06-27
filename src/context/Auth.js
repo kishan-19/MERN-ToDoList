@@ -7,7 +7,9 @@ export const Auth = (props) => {
 
     const listInitial = [];
     const [list, setList] = useState(listInitial);
-  const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState(0);
+    const [user, setUser] = useState("");
+    const [allUserInfo, setAllUserInfo] = useState([]);
 
     // store token in localStorage
     const tokenStoreInLs = (tokenValue) => {
@@ -35,10 +37,28 @@ export const Auth = (props) => {
                     "auth-token": getTokenInLS(),
                 }
             });
+            const response_User = await fetch('http://localhost:4000/api/auth/loginuser', {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    "auth-token": getTokenInLS(),
+                }
+            });
             setProgress(75);
-            const responseData = await response.json();
-            setList(responseData);
-            setProgress(100);
+            if (response.ok) {
+                const responseData = await response.json();
+                setList(responseData);
+                setProgress(100);
+            }
+            if (response_User.ok) {
+                const response_User_Data = await response_User.json();
+                setUser(response_User_Data);
+                setProgress(100);
+
+            } else {
+                setProgress(100);
+
+            }
         } catch (e) {
             console.error(e);
         }
@@ -58,7 +78,7 @@ export const Auth = (props) => {
             })
             setProgress(60);
             if (response.ok) {
-                 await response.json();
+                await response.json();
                 getUserData();
                 setProgress(100);
             }
@@ -81,7 +101,7 @@ export const Auth = (props) => {
             })
             setProgress(75);
             if (response.ok) {
-                 await response.json();
+                await response.json();
                 getUserData();
                 setProgress(100);
             } else {
@@ -125,11 +145,11 @@ export const Auth = (props) => {
             setProgress(60);
             if (response.ok) {
                 setProgress(75);
-               const responseData= await response.json();
+                const responseData = await response.json();
                 getUserData();
                 toast.warn(responseData.message);
                 setProgress(100);
-            }else{
+            } else {
                 toast.info("not delete all data");
                 setProgress(100);
             }
@@ -161,13 +181,31 @@ export const Auth = (props) => {
         }
     }
 
+    //get user data
+
+    const getAllUserData = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/api/auth/user', {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            if (response.ok) {
+                const responseData = await response.json();
+                setAllUserInfo(responseData);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
         <AuthContext.Provider value={{
             tokenStoreInLs, logoutUser, getTokenInLS,
             addAnotherOneList, addList, getUserData,
-            list, setList,deleteOneListItame, delteAll,
-            UpdateList,
-            progress,setProgress
+            list, setList, deleteOneListItame, delteAll,
+            UpdateList, getAllUserData, user,
+            progress, setProgress,allUserInfo,
         }}>
             {props.children}
         </AuthContext.Provider>

@@ -5,10 +5,12 @@ import './index.css';
 import reportWebVitals from "./reportWebVitals";
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Auth } from "./context/Auth.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+  <Auth>
     <App />
     <ToastContainer
 position="top-right"
@@ -23,6 +25,7 @@ pauseOnHover
 theme="colored"
 bodyClassName="toastBody"
 />
+</Auth>
   </React.StrictMode>
 );
 

@@ -8,7 +8,6 @@ body {
     color: #fff;
     background: #020631;
     overflow-x: hidden;
-    /* height: 100vh; */
 }
 
 /* navbar */
@@ -81,17 +80,6 @@ body {
     border-radius: 6px;
     width: 20rem;
 }
-
-/* .list ul li p{
-    background-color: #57007E;
-    color: #ebe4e4;
-    border-radius: 6px;
-    margin-top: 10px;
-    font-size: large;
-    padding: 9px 3px;
-    overflow-y: auto;
-    overflow-x: hidden;
-} */
 .list ul li p:hover {
     background: #fff;
     color: black;
@@ -200,4 +188,43 @@ body {
 .toastBody {
     font-family: "Atlas Grotask Web", Arial, Helvetica, sans-serif;
     font-size: 1rem;
+}
+
+
+/* admin css */
+
+.admin_page_heading {
+    color: #d1c3c3;
+    font-style: oblique;
+    font-family: fangsong;
+}
+
+.admin_nav ul li {
+    background: transparent;
+    color: #b6b6b6;
+    padding: 11px 18px 9px 4px;
+    font-size: 16px;
+}
+
+.navlink_admin {
+    display: flex;
+    text-decoration: none;
+}
+
+.admin_nav ul span {
+    display: flex;
+    align-items: center;
+}
+
+.user_table table {
+    background-color: white;
+}
+
+@media screen and (max-width: 526px) {
+    tbody, td, tfoot, th, thead, tr {
+        border-width: 2px;
+    }
+    .user_table table tbody tr td , .user_table table tbody tr td button{
+        padding:0;
+    }
 }
